@@ -1,0 +1,1 @@
+cmd_/home/chenpi/Desktop/Assignment3/Module.symvers := sed 's/\.ko$$/\.o/' /home/chenpi/Desktop/Assignment3/modules.order | scripts/mod/modpost -m -a  -o /home/chenpi/Desktop/Assignment3/Module.symvers -e -i Module.symvers   -T -

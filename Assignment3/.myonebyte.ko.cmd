@@ -1,0 +1,1 @@
+cmd_/home/chenpi/Desktop/Assignment3/myonebyte.ko := ld -r -m elf_x86_64 --build-id=sha1  -T scripts/module.lds -o /home/chenpi/Desktop/Assignment3/myonebyte.ko /home/chenpi/Desktop/Assignment3/myonebyte.o /home/chenpi/Desktop/Assignment3/myonebyte.mod.o;  true
