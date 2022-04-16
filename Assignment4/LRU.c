@@ -168,7 +168,8 @@ void LRUEvict(){
 }
 
 void printLRU() {
-    printf("\nCapacity: %d", sysLRU.capacity);
+    printf("\nLRU Status:\n");
+    printf("Capacity: %d", sysLRU.capacity);
     printf("\nInactive List:\n");
     printf("======================\n");
     printf("Inactive list size: %d\n", sysLRU.inactiveSize);
@@ -179,8 +180,8 @@ void printLRU() {
         if (count % 4 == 0){
             printf("[+%5d] |", count);
         }
-        printf("(seq = %d, ",node->seqno);
-        printf("offset = %d) ;",node->offset);
+
+        printf("(seqno = %3d, offset = %2d);", node->seqno, node->offset);
 
         if ((count+1) % 4 == 0){
             printf("\n");
@@ -199,8 +200,7 @@ void printLRU() {
         if (count % 4 == 0){
             printf("[+%5d] |", count);
         }
-        printf("(seq = %d, ",node->seqno);
-        printf("offset = %d); ",node->offset);
+        printf("(seqno = %3d, offset = %2d);", node->seqno, node->offset);
 
         if ((count+1) % 4 == 0){
             printf("\n");

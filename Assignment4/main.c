@@ -9,7 +9,7 @@
 
 int main(int argc, char** argv)
 {
-
+    int dataPrintFreq = 100;
     char* fileName = "A0229929L-assign4-input.dat";
     // char* fileName = "test.dat";
     FILE * fp = fopen(fileName, "rb");
@@ -26,26 +26,22 @@ int main(int argc, char** argv)
     setupOccupiedBlocks();
     setupVirtualMemory();
     setupLRU(250);
-
-
-
-    // pageAllocate(0,10);
-    // pageAllocate(1,8);
-
-    // printBuddyAllocatorMetaInfo();
-    // printBuddyAllocatorStatistic();
-    // printOccupiedBlocks();
-
-    // pageFree(0,2);
-
-    // printBuddyAllocatorMetaInfo();
-    // printBuddyAllocatorStatistic();
-    // printOccupiedBlocks();
-
     
+    int loopCount = 0;
     while (fscanf(fp, "%[^\n] ", file_contents) != EOF) {
+        if (loopCount % dataPrintFreq == 0) {
+            printf("\nAfter processing %d rows:\n", loopCount);
+            printBuddyAllocatorMetaInfo();
+            printBuddyAllocatorStatistic();
+            // printOccupiedBlocks();
+            // printVirtualMemory();
+            printLRU();
+        }
+
+
+
         *cmd = file_contents[0];
-        printf("cmd>%c\n",*cmd);
+        // printf("cmd>%c\n",*cmd);
 
         int i = 2;
         int j = 0;
@@ -62,8 +58,8 @@ int main(int argc, char** argv)
 
         int seqno = atoi(seqnoStr);
         int num = atoi(numStr);
-        printf("seqno>%d\n",seqno);
-        printf("num>%d\n\n",num);
+        // printf("seqno>%d\n",seqno);
+        // printf("num>%d\n\n",num);
 
         seqnoStr[1] = '\0';
         seqnoStr[2] = '\0';
@@ -72,13 +68,17 @@ int main(int argc, char** argv)
         if (*cmd == 'A') pageAllocate(seqno, num);
         else if (*cmd == 'F') pageFree(seqno, num);
         else if (*cmd == 'X') pageAccess(seqno, num);
- 
+
+        loopCount++;
+        
+
     }
     
+    printf("\nProgram Finish:\n");
     printBuddyAllocatorMetaInfo();
     printBuddyAllocatorStatistic();
-    printOccupiedBlocks();
-    printVirtualMemory();
+    // printOccupiedBlocks();
+    // printVirtualMemory();
     printLRU();
 
     fclose(fp);
