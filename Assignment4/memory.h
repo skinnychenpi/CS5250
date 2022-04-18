@@ -5,24 +5,10 @@
 #define FREE 0
 #define OCCUPIED 1
 
-/**********************************************************
- * You may need to change the partInfo and / or heapMetaInfo 
- *   structure IF NEEDED
- * We have added changes that should be sufficient for your 
- *   buddy system implementation
- * SUBMIT this file regardless of whether you modify it to
- *   ease the marking process
- *********************************************************/
 
 typedef struct BUDDYBLOCK {
     unsigned int offset;
 	struct BUDDYBLOCK *nextPart;
-
-    //Buddy system's partition has an implicit partition size
-	//int	size;
-
-    //Buddy system's partition is implicitly free
-	//int status;
 } buddyBlock;
 
 typedef struct {
